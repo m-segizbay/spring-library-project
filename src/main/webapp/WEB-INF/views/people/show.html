@@ -15,10 +15,9 @@
     <div th:if="${!books.isEmpty()}">
         <hr/>
         <h3>Books:</h3>
-        <br/>
-        <table th:each="book : ${books}">
-            <tr th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' +book.getYear()}">book</tr>
-        </table>
+        <div th:each="book : ${books}">
+            <p th:style="${book.isOverdue() ? 'color:red' : 'color:black'}" th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' +book.getYear()}">book</p>
+        </div>
         <hr/>
     </div>
     <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getPersonId()})}">
